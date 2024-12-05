@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECEITA</title>
+    <style>
+        body {
+          font-family:Verdana, Geneva, Tahoma, sans-serif;
+          margin: 300px;
+          text-align: center;
+          font-size: 22px;
+          background-color: darkolivegreen;
+          color:antiquewhite;
+        }
+        .ingredients {
+          text-align: center;
+          margin: 50px auto;
+          max-width: 500px;
+        }
+        button {
+          margin-top: 10px;
+          padding: 10px 20px;
+          cursor: pointer;
+          background-color: beige;
+        }
+        .result {
+          margin-top: 50px;
+          font-weight: bold;
+        }
+      </style>
+</head>
+<body>
+    <h1>Selecionar Ingredientes</h1>
+    <div class="ingredients">
+        <label><input type="checkbox" value="Leite">Leite</label>
+        <label><input type="checkbox" value="Ovo">Ovo</label>
+        <label><input type="checkbox" value="Manteiga">Manteiga</label>
+        <label><input type="checkbox" value="Chocolate em Pó">Chocolate em Pó</label>
+    </div>
+    <button id="show-selected">Exibir Ingredientes Selecionados</button>
+    <p class="result" id="result"></p>
+
+    <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+        const showSelectedBtn = document.getElementById('show-selected')
+        const resultDiv = document.getElementById('result')
+    
+        showSelectedBtn.addEventListener('click', () => {
+          const selectedIngredients = []
+    
+          function verificarCheckbox(checkbox) {
+            if (checkbox.checked) {
+              selectedIngredients.push(checkbox.value)
+            }
+          }
+    
+          checkboxes.forEach(verificarCheckbox)
+    
+          if (selectedIngredients.length > 0) {
+            resultDiv.textContent = `Ingredientes selecionados: ${selectedIngredients.join(', ')}`
+          } else {
+            resultDiv.textContent = 'Nenhum ingrediente selecionado.'
+          }
+        })
+      </script>
+</body>
+</html>
